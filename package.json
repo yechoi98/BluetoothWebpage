@@ -1,0 +1,25 @@
+{
+  "name": "scan-list",
+  "version": "1.0.0",
+  "description": "This page shows nearby bluetooth-devices-list.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yechoi98/animate.css.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yechoi98/animate.css/issues"
+  },
+  "homepage": "https://github.com/yechoi98/animate.css#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.9"
+  }
+}
