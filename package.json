@@ -1,5 +1,5 @@
 {
-  "name": "scan-list",
+  "name": "bluetooth-table",
   "version": "1.0.0",
   "description": "This page shows nearby bluetooth-devices-list.",
   "main": "index.js",

@@ -1,0 +1,22 @@
+<!-- views/contacts/index.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %> 
+  </head>
+  <body>
+    <%- include('../partials/nav') %> 
+
+    <div>
+      <h2>Index</h2>
+      <ul>
+        <% students.forEach(function(student) { %> 
+          <li>
+            <%= student.name %>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </body>
+</html>
