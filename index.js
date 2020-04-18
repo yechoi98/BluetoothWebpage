@@ -3,6 +3,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var app = express();
 
 // DB setting
@@ -28,6 +29,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 // DB schema 
 var studentSchema = mongoose.Schema({
@@ -52,18 +54,50 @@ app.get('/students', function (req, res) {
     });
 });
 
-// Students - New // 8
+// Students - New 
 app.get('/students/new', function (req, res) {
     res.render('students/new');
 });
 
-// Contacts - create // 9
+// Students - create 
 app.post('/students', function (req, res) {
     Student.create(req.body, function (err, student) {
         if (err) return res.json(err);
         res.redirect('/students');
     });
 });
+
+// Students - show 
+app.get('/students/:id', function(req, res){
+    Student.findOne({_id:req.params.id}, function(err, student){
+      if(err) return res.json(err);
+      res.render('students/show', {student:student});
+    });
+});
+
+// Students - edit 
+app.get('/students/:id/edit', function(req, res){
+    Student.findOne({_id:req.params.id}, function(err, student){
+      if(err) return res.json(err);
+      res.render('students/edit', {student:student});
+    });
+});
+
+// Students - update 
+app.put('/students/:id', function(req, res){
+    Student.findOneAndUpdate({_id:req.params.id}, req.body, function(err, student){
+      if(err) return res.json(err);
+      res.redirect('/students/'+req.params.id);
+    });
+  });
+
+  // Students - destroy
+  app.delete('/students/:id', function(req, res){
+    Student.deleteOne({_id:req.params.id}, function(err){
+      if(err) return res.json(err);
+      res.redirect('/students');
+    });
+  });
 
 // Port setting
 var port = 3000;

@@ -1,4 +1,4 @@
-<!-- views/contacts/index.ejs -->
+<!-- views/students/index.ejs -->
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
       <ul>
         <% students.forEach(function(student) { %> 
           <li>
-            <%= student.name %>
+            <a href="/students/<%= student._id %>"><%= student.name %></a>
           </li>
         <% }) %>
       </ul>
