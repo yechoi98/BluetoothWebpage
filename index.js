@@ -1,5 +1,3 @@
-// index.js
-
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -31,73 +29,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-// DB schema 
-var studentSchema = mongoose.Schema({
-    name: { type: String, required: true, unique: true },
-    number: { type: Number },
-    major: { type: String },
-    email: { type: String },
-    mac: { type: String },
-});
-var Student = mongoose.model('student', studentSchema); 
-
-// Home 
-app.get('/', function (req, res) {
-    res.redirect('/students');
-});
-
-// Students - Index 
-app.get('/students', function (req, res) {
-    Student.find({}, function (err, students) {
-        if (err) return res.json(err);
-        res.render('students/index', { students: students });
-    });
-});
-
-// Students - New 
-app.get('/students/new', function (req, res) {
-    res.render('students/new');
-});
-
-// Students - create 
-app.post('/students', function (req, res) {
-    Student.create(req.body, function (err, student) {
-        if (err) return res.json(err);
-        res.redirect('/students');
-    });
-});
-
-// Students - show 
-app.get('/students/:id', function(req, res){
-    Student.findOne({_id:req.params.id}, function(err, student){
-      if(err) return res.json(err);
-      res.render('students/show', {student:student});
-    });
-});
-
-// Students - edit 
-app.get('/students/:id/edit', function(req, res){
-    Student.findOne({_id:req.params.id}, function(err, student){
-      if(err) return res.json(err);
-      res.render('students/edit', {student:student});
-    });
-});
-
-// Students - update 
-app.put('/students/:id', function(req, res){
-    Student.findOneAndUpdate({_id:req.params.id}, req.body, function(err, student){
-      if(err) return res.json(err);
-      res.redirect('/students/'+req.params.id);
-    });
-  });
-
-  // Students - destroy
-  app.delete('/students/:id', function(req, res){
-    Student.deleteOne({_id:req.params.id}, function(err){
-      if(err) return res.json(err);
-      res.redirect('/students');
-    });
-  });
+// Routes 
+app.use('/', require('./routes/home')); 
+app.use('/students', require('./routes/students'));
 
 // Port setting
 var port = 3000;
