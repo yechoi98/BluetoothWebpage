@@ -14,7 +14,7 @@ header {
     width: 100%;
     margin: 0; /* 공백 제거 */
     padding: 0; /* 공백 제거 */
-    background-color: darksalmon;
+    background-color: darkblue;
     list-style-type: none; /* 목록 기호 제거 */
 }
 
@@ -30,9 +30,9 @@ header {
 }
 
 .nav-item:nth-child(1) {
-    background-color: aqua;
+    background-color: gray;
 }
 
 .nav-item:hover {
-    background-color: salmon;
+    background-color: blue;
 }
