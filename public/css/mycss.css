@@ -2,8 +2,44 @@ body {
     margin : 0; /* body의 바깥 여백 제거 */
 }
 
-header {
+h1 {
     margin-top: 80px;
+    text-align: center;
+}
+
+h5 {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+h6 {
+    text-align: center;
+}
+
+.delay-0point5 {
+    animation-delay: 0.5s;
+    animation-duration: 3s;
+}
+
+.delay-1point5 {
+    animation-delay: 1.5s;
+    animation-duration: 3s;
+}
+
+.delay-2point5 {
+    animation-delay: 2.5s;
+    animation-duration: 3s;
+}
+
+.delay-3point5 {
+    animation-delay: 3.5s;
+    animation-duration: 3s;
+}
+
+.delay-4point5 {
+    animation-delay: 4.5s;
+    animation-duration: 3s;
 }
 
 .nav-container {
