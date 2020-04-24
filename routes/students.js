@@ -23,14 +23,6 @@ router.post('/', function (req, res) {
     });
 });
 
-// Students - show 
-router.get('/:id', function(req, res){
-    Student.findOne({_id:req.params.id}, function(err, student){
-      if(err) return res.json(err);
-      res.render('students/show', {student:student});
-    });
-});
-
 // Students - edit 
 router.get('/:id/edit', function(req, res){
     Student.findOne({_id:req.params.id}, function(err, student){
@@ -43,9 +35,9 @@ router.get('/:id/edit', function(req, res){
 router.put('/:id', function(req, res){
     Student.findOneAndUpdate({_id:req.params.id}, req.body, function(err, student){
       if(err) return res.json(err);
-      res.redirect('/students/'+req.params.id);
+      res.redirect('/students');
     });
-  });
+});
 
   // Students - destroy
   router.delete('/:id', function(req, res){
