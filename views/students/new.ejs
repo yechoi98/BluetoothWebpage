@@ -8,30 +8,30 @@
   <body>
     <%- include('../partials/nav') %>
     <h1 class="animated fadeInUp">New</h1>
-    <div>
+    <div class="form-container">
       <form action="/students" method="post">
         <div>
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" value="">
+          <input type="text" id="name" name="name" placeholder="이름">
         </div>
         <div>
           <label for="number">Number</label>
-          <input type="text" id="number" name="number" value="">
+          <input type="text" id="number" name="number" placeholder="학번">
         </div>
         <div>
           <label for="major">Major</label>
-          <input type="text" id="major" name="major" value="">
+          <input type="text" id="major" name="major" placeholder="학과">
         </div>
         <div>
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="">
+            <input type="text" id="email" name="email" placeholder="xxxxxx@xxxxxx.xxx">
         </div>
         <div>
             <label for="mac">MAC</label>
-            <input type="text" id="mac" name="mac" value="">
+            <input type="text" id="mac" name="mac" placeholder="00:00:00:00:00:00">
         </div>
-        <div>
-          <button type="submit">Submit</button>
+        <div class="form-submit">
+          <button type="submit" id="submit" class="submit">Submit</button>
         </div>
       </form>
     </div>

@@ -2,39 +2,38 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <%- include('../partials/head') %>
-  </head>
-  <body>
-    <%- include('../partials/nav') %>
-
-    <div>
-      <h2>Edit</h2>
-      <form action="/students/<%= student._id %>?_method=put" method="post">
-        <div>
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" value="<%= student.name %>">
+    <head>
+        <%- include('../partials/head') %>
+    </head>
+    <body>
+        <%- include('../partials/nav') %>
+        <h1 class="animated fadeInUp">Edit</h1>
+        <div class="form-container">
+            <form action="/students/<%= student._id %>?_method=put" method="post">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" value="<%= student.name %>" />
+                </div>
+                <div>
+                    <label for="number">Number</label>
+                    <input type="number" id="number" name="number" value="<%= student.number %>" />
+                </div>
+                <div>
+                    <label for="major">Major</label>
+                    <input type="text" id="major" name="major" value="<%= student.major %>" />
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" value="<%= student.email %>" />
+                </div>
+                <div>
+                    <label for="mac">Mac Address</label>
+                    <input type="text" id="mac" name="mac" value="<%= student.mac %>" />
+                </div>
+                <div class="form-submit">
+                    <button class="submit" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
-        <div>
-            <label for="number">Number</label>
-            <input type="number" id="number" name="number" value="<%= student.number %>">
-        </div>
-        <div>
-            <label for="major">Major</label>
-            <input type="text" id="major" name="major" value="<%= student.major %>">
-          </div>
-        <div>
-          <label for="email">Email</label>
-          <input type="text" id="email" name="email" value="<%= student.email %>">
-        </div>
-        <div>
-          <label for="mac">Mac Address</label>
-          <input type="text" id="mac" name="mac" value="<%= student.mac %>">
-        </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </div>
-    </form>
-  </body>
+    </body>
 </html>

@@ -17,6 +17,7 @@ h6 {
     text-align: center;
 }
 
+/* animate.css custom delay */
 .delay-0point5 {
     animation-delay: 0.5s;
     animation-duration: 3s;
@@ -41,6 +42,8 @@ h6 {
     animation-delay: 4.5s;
     animation-duration: 3s;
 }
+
+/* nav bar css */
 
 .nav-container {
     position: fixed;
@@ -73,6 +76,8 @@ h6 {
     background-color: blue;
 }
 
+/* table css */
+
 table {
     width: 100%;
     border-top: 1px solid #444444;
@@ -85,28 +90,65 @@ th, td {
     text-align: center;
 }
 
-
-.button {
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
+.table-button {
+    width:80px;
+    background-color: #342baf;
     border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
     cursor: pointer;
-    outline: none;
-    }
-  
-  .button:hover {
-    background-color: #2EE59D;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
-  }
+    border-radius:10px;
+}
+
+.table-button:hover {
+    background-color: rgb(22, 22, 207);
+}
+
+/* form css */
+
+input {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: solid 1px black; 
+}
+
+input:focus { background-color: #E0FFFF; }
+
+.form-container {
+    width:300px;
+    height:300px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-150px;
+    margin-top:-150px;
+}
+
+.submit {
+    width:100px;
+    background-color: #342baf;
+    border: none;
+    color:#fff;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius:10px;
+}
+.submit:hover {
+    background-color: rgb(22, 22, 207);
+}
+
+.form-submit {
+   text-align:center;
+}

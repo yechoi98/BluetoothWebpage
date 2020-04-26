@@ -23,8 +23,8 @@
             <td><%= student.major %></td>
             <td><%= student.email %></td>
             <td><%= student.mac %></td>
-            <td><button type="button" onclick="location.href='/students/<%= student._id %>/edit'">수정</button></td>
-            <td><form action="/students/<%= student._id %>?_method=delete" method="post"><button type="button" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">삭제</button></form></td>
+            <td><button type="button" class="table-button" onclick="location.href='/students/<%= student._id %>/edit'">수정</button></td>
+            <td><form action="/students/<%= student._id %>?_method=delete" method="post"><button type="button"  class="table-button" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">삭제</button></form></td>
           </tr>
           <% }) %>
         </tbody>
