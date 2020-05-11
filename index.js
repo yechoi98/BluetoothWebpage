@@ -9,7 +9,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect(process.env.MONGO_DB);
+mongoose.connect(process.env.MONGO_DB,{dbName: 'Bluetooth'});
 var db = mongoose.connection;
 
 // if DB connection succeed
