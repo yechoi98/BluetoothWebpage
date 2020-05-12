@@ -1,12 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var Student = require('../models/Student'); 
+var Scan = require('../models/Scan'); 
 
 // Students - Index 
 router.get('/', function (req, res) {
     Student.find({}, function (err, students) {
         if (err) return res.json(err);
-        res.render('students/index', { students: students });
+        Scan.find({}, function (err, scans) {
+          if (err) return res.json(err);
+          res.render('students/index', { students: students, scans: scans});
+        })
     });
 });
 
