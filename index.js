@@ -9,15 +9,13 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect(process.env.MONGO_DB);
+mongoose.connect(process.env.MONGO_DB,{dbName: 'bluetooth'});
 var db = mongoose.connection;
 
-// if DB connection succeed
 db.once('open', function () {
     console.log('DB connected');
 });
 
-// if DB connection failed
 db.on('error', function (err) {
     console.log('DB ERROR : ', err);
 });

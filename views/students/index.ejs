@@ -4,15 +4,17 @@
 <html>
   <head>
     <%- include('../partials/head') %> 
+    <%- include ('../functions') %> 
   </head>
   <body>
     <%- include('../partials/nav') %> 
     <h1 class="animated fadeInUp">Index</h1>
+    <h5 class="animated fadeInUp delay-0point5" style="margin-bottom: 50px;">5분 전부터 스캔된 결과만 표시합니다.</h5>
     <div>
       <table>
         <thead>
           <tr>
-            <th>Name</th><th>number</th><th>major</th><th>email</th><th>mac</th><th>edit</th><th>delete</th>
+            <th>Name</th><th>number</th><th>major</th><th>email</th><th>mac</th><th>스캔 결과</th><th>스캔 시간</th><th>edit</th><th>delete</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +25,8 @@
             <td><%= student.major %></td>
             <td><%= student.email %></td>
             <td><%= student.mac %></td>
+            <td><%= getResult(student.mac, scans) %></td>
+            <td><%= getTime(student.mac, scans) %></td>
             <td><button type="button" class="table-button" onclick="location.href='/students/<%= student._id %>/edit'">수정</button></td>
             <td><form action="/students/<%= student._id %>?_method=delete" method="post"><button type="button"  class="table-button" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">삭제</button></form></td>
           </tr>
