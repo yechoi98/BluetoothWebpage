@@ -1,0 +1,18 @@
+<!-- views/students/index.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %> 
+    <%- include ('../functions') %> 
+  </head>
+  <body>
+    <%- include('../partials/nav') %> 
+    <h1 class="animated fadeInUp">Graph</h1>
+    <h5 class="animated fadeInUp delay-0point5" style="margin-bottom: 50px;">5분 전부터 지금까지 스캔된 결과를 표시합니다.</h5>
+    <div>
+     <h1><%= counts_O %></h1>
+     <h1><%= counts_X %></h1>
+    </div>
+  </body>
+</html>
