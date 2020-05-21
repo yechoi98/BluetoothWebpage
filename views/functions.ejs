@@ -1,12 +1,10 @@
 <%
 
-getResult = function(mac, scans) {
-    for(var i in scans){
+getResult = function(mac, results) {
+    for(var i in results){
         // UTC로 저장된 몽고디비 시간을 한국 시간대(-9시간)로 변경
-        var scanTimeInMilliSec = new Date(scans[i].time).getTime()-32400000 
-
-        // 스캔된 데이터의 맥주소와 유저의 맥주소가 서로 일치하고 스캔된 데이터의 시간이 현재 시간에서 3분 안의 데이터이면 "O"를 return    
-        if(scans[i].address == mac && scanTimeInMilliSec > new Date().getTime() - 300000){
+        var scanTimeInMilliSec = new Date(results[i].time).getTime()-32400000 
+        if(results[i].mac == mac && scanTimeInMilliSec >= new Date().getTime() - 300000){
             return "O"
         } 
     }
@@ -14,19 +12,14 @@ getResult = function(mac, scans) {
 }
 
 
-getTime = function(mac, scans) {
-    for(var i in scans) {
-        // UTC로 저장된 몽고디비 시간을 한국 시간대(-9시간)로 변경
-        var scanTimeInMilliSec = new Date(scans[i].time).getTime()-32400000 
-       
-        // 스캔된 데이터의 맥주소와 유저의 맥주소가 서로 일치하고 스캔된 데이터의 시간이 현재 시간에서 3분 안의 데이터이면 "O"를 return    
-        if(scans[i].address == mac && scanTimeInMilliSec > new Date().getTime() - 300000){
+getTime = function(mac, results) {
+    for(var i in results) {
+        if(results[i].mac == mac && results[i].time != null){
+            var scanTimeInMilliSec = new Date(results[i].time).getTime()-32400000  // 한국 시간대로 변경 -9시간
             var time = new Date(scanTimeInMilliSec)
-            console.log('time', time)
             return time.getFullYear()+'년 '+(time.getMonth()+1)+'월 '+time.getDate()+'일 '+time.getHours()+'시 '+time.getMinutes()+'분 '+time.getSeconds()+'초 '
-        } // 스캔된 데이터의 맥주소와 유저의 맥주소가 서로 일치하고 스캔된 데이터의 시간이 현재 시간에서 3분 안의 데이터이면 스캔된 시간을 return
+        } 
     }
-    
     return "-"
 }
 

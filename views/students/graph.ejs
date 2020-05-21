@@ -11,62 +11,11 @@
     <%- include('../partials/nav') %> 
     <h1 class="animated fadeInUp">Graph</h1>
     <h5 class="animated fadeInUp delay-0point5" style="margin-bottom: 50px;">5분 전부터 지금까지 스캔된 결과를 표시합니다.</h5>
-    
+    <div><%=results%></div>
 
     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
     <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
 
-    <script>
-        var o = Number("<%= counts_O %>")
-        var x = Number("<%= counts_X %>")
-    
-        window.onload = function() {
-        
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title: {
-                text: ""
-            },
-            data: [{
-                type: "pie",
-                startAngle: 0,
-                yValueFormatString: "##0.00\"%\"",
-                indexLabel: "{label} {y}",
-                dataPoints: [
-                    {y: (o/(o+x))*100, label: "스캔된 유저"},
-                    {y: (x/(o+x))*100, label: "스캔되지 않은 유저"},
-                 
-                ]
-            }]
-        });
-        chart.render();
-
-     
-var chart2 = new CanvasJS.Chart("chartContainer2", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title:{
-		text: ""
-	},
-	axisY: {
-		title: "유저 수"
-	},
-	data: [{        
-		type: "column",  
-		showInLegend: true, 
-		legendMarkerColor: "grey",
-		legendText: "명",
-		dataPoints: [      
-			{ y: o, label: "스캔된 유저" },
-			{ y: x,  label: "스캔되지 않은 유저" },
-
-		]
-	}]
-});
-chart2.render();
-        
-        }
-        </script>
   </body>
 </html>

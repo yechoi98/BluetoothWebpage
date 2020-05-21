@@ -6,12 +6,14 @@ var Result = require('../models/Result');
 
 // Students - Index
 router.get('/', function (req, res) {
+    
     Student.find({}, function (err, students) {
         if (err) return res.json(err);
-        Scan.find({}, function (err, scans) {
-            if (err) return res.json(err);
-            res.render('students/index', { students: students, scans: scans });
-        });
+       
+        Result.find({}, function (err, results) {
+            if (err) return res.json(err)
+            res.render('students/index', {students: students, results: results})
+        })
     });
 });
 
@@ -62,6 +64,17 @@ router.delete('/:mac', function (req, res) {
 
     Result.deleteOne({mac : req.params.mac}, function (err) {
       if(err) return res.json(err);
+    })
+});
+
+
+// Students - graph
+
+// Students - Index
+router.get('/graph', function (req, res) {
+    Result.find({}, function(err, results) {
+        if (err) res.json(err)
+        res.render('students/graph', { results : results});
     })
 });
 
