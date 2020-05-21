@@ -12,9 +12,12 @@ import bluetooth
 import pymongo
 import datetime
 
-client=pymongo.MongoClient('mongodb://yechoi:0000@220.149.13.179:27017/admin')
-mydb=client["bluetooth"]
-scans=mydb["scans"]
+client = pymongo.MongoClient('mongodb://yechoi:0000@220.149.13.179:27017/admin')
+mydb = client["bluetooth"]
+scans = mydb["scans"]
+results = mydb["results"]
+
+data = []
 
 print('MongoDB Connected.')
 
@@ -26,13 +29,17 @@ nearby_devices = bluetooth.discover_devices(duration=8, lookup_names=True,
 if not nearby_devices:
     print("Device not found")
 else : 
-    data=[{"address":addr,"deviceName":name,"time":datetime.datetime.now()} for addr,name in nearby_devices]
+    data = [{"address":addr,"deviceName":name,"time":datetime.datetime.now()} for addr,name in nearby_devices]
     print("Found {} devices".format(len(nearby_devices)))
     for addr, name in nearby_devices:
         try:
             print("   {} - {}".format(addr, name))
         except UnicodeEncodeError:
             print("   {} - {}".format(addr, name.encode("utf-8", "replace")))
-    x=scans.insert_many(data)
+    x = scans.insert_many(data)
     print("insert success!")
 
+
+for items in data:
+    for i in items:
+         results.find_one_and_update({'mac':items['address']},{'$set':{'time':items['time']}}, upsert=True)
