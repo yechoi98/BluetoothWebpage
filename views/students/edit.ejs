@@ -9,7 +9,7 @@
         <%- include('../partials/nav') %>
         <h1 class="animated fadeInUp">Edit</h1>
         <div class="form-container">
-            <form action="/students/<%= student._id %>?_method=put" method="post">
+            <form action="/students/<%= student.mac %>?_method=put" method="post">
                 <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" value="<%= student.name %>" />
