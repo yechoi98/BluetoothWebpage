@@ -22,6 +22,7 @@ print("Performing inquiry...")
 
 nearby_devices = bluetooth.discover_devices(duration=8, lookup_names=True,
                                             flush_cache=True, lookup_class=False)
+
 if not nearby_devices:
     print("Device not found")
 else : 
@@ -34,3 +35,4 @@ else :
             print("   {} - {}".format(addr, name.encode("utf-8", "replace")))
     x=scans.insert_many(data)
     print("insert success!")
+
