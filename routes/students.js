@@ -68,40 +68,6 @@ router.delete('/:mac', function (req, res) {
 });
 
 
-// Students - graph
-
-// Students - Index
-router.get('/graph', function (req, res) {
-    Result.find({}, function(err, results) {
-        if (err) res.json(err)
-        res.render('students/graph', { o: getCountsO(results), x: getCountsX(results)});
-    })
-});
-
 module.exports = router;
 
 
-
-getCountsO = function(results) {
-    var o = 0;
-    for (var i in results) {
-        var scanTimeInMilliSec = new Date(results[i].time).getTime() - 32400000;
-        if (results[i].time != null && scanTimeInMilliSec >= new Date().getTime() - 300000) {
-            o++;
-        }
-    }
-
-    return o;
-}
-
-getCountsX = function(results) {
-    var x = 0;
-    for (var i in results) {
-        var scanTimeInMilliSec = new Date(results[i].time).getTime() - 32400000;
-        if (results[i].time == null || scanTimeInMilliSec < new Date().getTime() - 300000) {
-            x++;
-        }
-    }
-
-    return x;
-}
