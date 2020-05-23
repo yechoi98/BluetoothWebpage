@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Visualize</title>
+        <link rel="stylesheet" type="text/css" href="/css/visualize.css" />
+        <link rel="stylesheet" type="text/css" href="/css/visualize-light.css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
+        <script type="text/javascript" src="/js/visualize.jQuery.js"></script>
+
+        <script type="text/javascript">
+            $(function() {
+
+                $('#data').visualize({type: 'pie', pieLabelPos:'inside'})
+      
+
+            })
+        </script>
+    </head>
+
+    <body>
+
+        <table id="data">
+
+            <caption>스캔 결과</caption>
+
+            <thead>
+
+                <tr>
+                    <td></td><th>1</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <th>스캔된 유저</th><td><%= o %></td>
+                </tr>
+
+                <tr>
+                    <th>스캔되지 않은 유저</th><td><%= x %></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </body>
+</html>

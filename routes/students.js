@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Student = require('../models/Student');
-var Scan = require('../models/Scan');
 var Result = require('../models/Result');
+var f = require('../public/js/functions')
+
 
 // Students - Index
 router.get('/', function (req, res) {
@@ -16,6 +17,14 @@ router.get('/', function (req, res) {
         })
     });
 });
+
+// Students - Graph
+router.get('/graph', function(req, res){
+    Result.find({}, function(err, results) {
+        if (err) res.json(err)
+        res.render('students/graph', { o: f.getCountsO(results), x: f.getCountsX(results)});
+    })
+})
 
 // Students - New
 router.get('/new', function (req, res) {
