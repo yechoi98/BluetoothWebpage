@@ -1,53 +1,39 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>Visualize</title>
-        <link rel="stylesheet" type="text/css" href="/css/visualize.css" />
-        <link rel="stylesheet" type="text/css" href="/css/visualize-light.css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.js"></script>
-        <script type="text/javascript" src="/js/visualize.jQuery.js"></script>
+<head>
+    <%- include('../partials/head') %>
+<script>
+window.onload = function() {
+var o = "<%= o %>"
+var x = "<%= x %>"
 
-        <script type="text/javascript">
-            $(function() {
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "User Graph"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+			{y: o, label: "Scanned"},
+			{y: x, label: "Not Scanned"},
+		]
+	}]
+});
+chart.render();
 
-                $('#data').visualize({type: 'pie', pieLabelPos:'inside'})
-      
+}
+</script>
 
-            })
-        </script>
-    </head>
-
-    <body>
-        <%- include ('../partials/nav') %> 
-        <h1 class="animated fadeInUp">Index</h1>
-        <h5 class="animated fadeInUp delay-0point5" style="margin-bottom: 50px;">5분 전부터 지금까지 블루투스로 스캔된 결과 그래프를 표시합니다.</h5>
-        <div>
-        <table id="data">
-
-            <caption>스캔 결과</caption>
-
-            <thead>
-
-                <tr>
-                    <td></td><th>1</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <th>스캔된 유저</th><td><%= o %></td>
-                </tr>
-
-                <tr>
-                    <th>스캔되지 않은 유저</th><td><%= x %></td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </body>
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <h1 class="animated fadeInUp">Graph</h1>
+    <h5 class="animated fadeInUp delay-0point5" style="margin-bottom: 50px;">5분 전부터 지금까지 스캔된 유저의 수를 표시합니다.</h5>
+    <div style="padding-top: 100px;"></div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
 </html>
