@@ -32,7 +32,7 @@ app.use('/', require('./routes/home'));
 app.use('/students', require('./routes/students'));
 
 // Port setting
-var port = 3200;
+var port = 3000;
 app.listen(port, function () {
     console.log('server on! http://localhost:' + port);
 });
