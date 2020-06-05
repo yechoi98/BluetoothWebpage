@@ -21,7 +21,10 @@ router.get('/', function (req, res) {
 router.get('/graph', function(req, res){
     Result.find({}, function(err, results) {
         if (err) res.json(err)
-        res.render('students/graph', { o: f.getCountsO(results, students), x: f.getCountsX(results, students)});
+        Student.find({}, function(err, students) {
+            if (err) res.json(err)
+            res.render('students/graph', { o: f.getCountsO(results, students), x: f.getCountsX(results, students)});
+        })
     })
 })
 
