@@ -10,7 +10,6 @@ router.get('/', function (req, res) {
     
     Student.find({}, function (err, students) {
         if (err) return res.json(err);
-       
         Result.find({}, function (err, results) {
             if (err) return res.json(err)
             res.render('students/index', {students: students, results: results})
@@ -20,9 +19,11 @@ router.get('/', function (req, res) {
 
 // Students - Graph
 router.get('/graph', function(req, res){
-    Result.find({}, function(err, results) {
-        if (err) res.json(err)
-        res.render('students/graph', { o: f.getCountsO(results), x: f.getCountsX(results)});
+    Student.find({}, function(err, students){
+        Result.find({}, function(err, results) {
+            if (err) res.json(err)
+            res.render('students/graph', { o: f.getCountsO(results, students), x: f.getCountsX(results, students)});
+        })
     })
 })
 
@@ -35,11 +36,11 @@ router.get('/new', function (req, res) {
 router.post('/', function (req, res) {
     Student.create(req.body, function (err, student) {
         if (err) return res.json(err);
-        res.redirect('/students');
     });
     Result.create({ mac: req.body.mac }, function (err, result) {
         if (err) return res.json(err);
     });
+    res.redirect('/students');
 });
 
 // Students - edit
@@ -55,25 +56,25 @@ router.put('/:mac', function (req, res) {
     Student.findOneAndUpdate({ mac: req.params.mac }, req.body, function (err, student) {
       console.log(req.params.mac)
         if (err) return res.json(err);
-        res.redirect('/students');
     });
     Result.findOneAndUpdate({mac : req.params.mac}, {mac : req.body.mac}, function (err, result) {
       if(err) return res.json(err);
     })
+    res.redirect('/students');
 });
 
 // Students - destroy
 router.delete('/:mac', function (req, res) {
     Student.deleteOne({ mac: req.params.mac }, function (err) {
-
       console.log(req.params.mac)
         if (err) return res.json(err);
-        res.redirect('/students');
     });
 
     Result.deleteOne({mac : req.params.mac}, function (err) {
       if(err) return res.json(err);
     })
+
+    res.redirect('/students');
 });
 
 
