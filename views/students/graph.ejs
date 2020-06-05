@@ -5,7 +5,8 @@
 window.onload = function() {
 var o = "<%= o %>"
 var x = "<%= x %>"
-alert(x)
+
+alert(o,x)
 
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
@@ -15,7 +16,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	data: [{
 		type: "pie",
 		startAngle: 240,
-		yValueFormatString: "##명",
+		yValueFormatString: "#명",
 		indexLabel: "{label} {y}",
 		dataPoints: [
 			{y: o, label: "Scanned"},
